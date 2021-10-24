@@ -60,7 +60,7 @@ button:active {
   height: 8rem;
   background-color: #290033;
   margin-bottom: 2rem;
-  transition: transform 0.3s ease-out;
+  /* transition: transform 0.3s ease-out; */
 }
 .container {
   max-width: 40rem;
@@ -75,6 +75,20 @@ button:active {
 }
 
 .animate {
-  transform: translateX(-150px);
+  /* transform: translateX(-150px); */
+  /* it tells the element to be animated for the 0.3s and forward used for to tell the browser to accept the new state  */
+  animation: box-slide 0.3s ease-out forwards;
+}
+
+@keyframes box-slide {
+  0% {
+    transform: translateX(0) scale(1);
+  }
+  75% {
+    transform: translateX(-120px) scale(1.1);
+  }
+  100% {
+    transform: translateX(-160px) scale(1);
+  }
 }
 </style>
