@@ -3,6 +3,17 @@
     <div class="block" :class="{ animate: animateBlock }"></div>
     <button @click="handleAnimateBlock">Animate</button>
   </div>
+
+  <div class="container">
+    <transition>
+      <p v-if="paraIsVisible">
+        This is the para which visible sometimes for this we need to test the
+        animations
+      </p>
+    </transition>
+    <button @click="togglePara">Toggle Para</button>
+  </div>
+
   <base-modal @close="hideDialog" v-if="dialogIsVisible">
     <p>This is a test dialog!</p>
     <button @click="hideDialog">Close it!</button>
@@ -15,7 +26,11 @@
 <script>
 export default {
   data() {
-    return { dialogIsVisible: false, animateBlock: false };
+    return {
+      dialogIsVisible: false,
+      animateBlock: false,
+      paraIsVisible: false,
+    };
   },
   methods: {
     showDialog() {
@@ -26,6 +41,9 @@ export default {
     },
     handleAnimateBlock() {
       this.animateBlock = !this.animateBlock;
+    },
+    togglePara() {
+      this.paraIsVisible = !this.paraIsVisible;
     },
   },
 };
@@ -78,6 +96,32 @@ button:active {
   /* transform: translateX(-150px); */
   /* it tells the element to be animated for the 0.3s and forward used for to tell the browser to accept the new state  */
   animation: box-slide 0.3s ease-out forwards;
+}
+
+.v-enter-from {
+  opacity: 0;
+  transform: translateY(-50px);
+}
+
+.v-enter-active {
+  transition: all 0.3s ease-out;
+}
+
+.v-enter-to {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.v-leave-from {
+  opacity: 1;
+  transform: translateY(0);
+}
+.v-leave-active {
+  transition: all 0.3s ease-in;
+}
+.v-leave-to {
+  opacity: 0;
+  transform: translateY(-50px);
 }
 
 @keyframes box-slide {
