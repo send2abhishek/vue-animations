@@ -99,40 +99,40 @@ button:active {
 }
 
 .v-enter-from {
-  opacity: 0;
-  transform: translateY(-50px);
+  /* opacity: 0;
+  transform: translateY(-50px); */
 }
 
 .v-enter-active {
-  transition: all 0.3s ease-out;
+  animation: box-slide 0.3s ease-out;
 }
 
 .v-enter-to {
-  opacity: 1;
-  transform: translateY(0);
+  /* opacity: 1;
+  transform: translateY(0); */
 }
 
 .v-leave-from {
-  opacity: 1;
-  transform: translateY(0);
+  /* opacity: 1;
+  transform: translateY(0); */
 }
 .v-leave-active {
-  transition: all 0.3s ease-in;
+  animation: box-slide 0.3s ease-out;
 }
 .v-leave-to {
-  opacity: 0;
-  transform: translateY(-50px);
+  /* opacity: 0;
+  transform: translateY(-50px); */
 }
 
 @keyframes box-slide {
   0% {
-    transform: translateX(0) scale(1);
+    transform: translateY(-50px) scale(1);
   }
   75% {
-    transform: translateX(-120px) scale(1.1);
+    transform: translateY(-30px) scale(1.1);
   }
   100% {
-    transform: translateX(-160px) scale(1);
+    transform: translateY(0) scale(1);
   }
 }
 </style>
